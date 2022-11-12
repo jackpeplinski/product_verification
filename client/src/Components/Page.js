@@ -5,6 +5,7 @@ const Page = () => {
     <>
       <h1 style={{ textAlign: "center" }}>Louis Vuitton Purse</h1>
       <h3 style={{ textAlign: "center" }}>Verified Luxury Goods</h3>
+      <img />
       <h3>Owner</h3>
       <p>0xNinjuhL</p>
       <h3>Description</h3>
