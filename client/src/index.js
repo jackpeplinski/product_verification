@@ -10,7 +10,6 @@ root.render(
   <React.StrictMode>
     <Wrapper>
       <Page />
-      {/* <Checkmark /> */}
     </Wrapper>
   </React.StrictMode>
 );

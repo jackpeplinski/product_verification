@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
 
 const Page = () => {
+  const [verified, setVerified] = useState();
+
+  useEffect(() => {});
   return (
     <>
       <h1 style={{ textAlign: "center" }}>Louis Vuitton Purse</h1>

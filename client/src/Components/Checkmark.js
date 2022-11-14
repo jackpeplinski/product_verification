@@ -3,7 +3,7 @@ import "../styles/App.css";
 
 export const Checkmark = () => {
   return (
-    <div class="wrapper">
+    <>
       <svg
         class="checkmark"
         xmlns="http://www.w3.org/2000/svg"
@@ -16,7 +16,7 @@ export const Checkmark = () => {
           d="M14.1 27.2l7.1 7.2 16.7-16.8"
         />
       </svg>
-    </div>
+    </>
   );
 };
 
