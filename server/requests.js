@@ -7,14 +7,9 @@ let mockDB = {
   '0x964937a0afdd89569c87c582f83e881c1b036486': 'Verfied Seller A',
 };
 
-const authorizeTag = async (x, n, e) => {
+const authorizeTag = async (q_params) => {
   // send the request to seritag for verification
-  let res = await axios.get(`https://api.ixkio.com/v1/t`, {
-    params: { x: x, n: n, e: e },
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  let res = await axios.get(`https://api.ixkio.com/v1/t`, q_params);
 
   // parse the response
   let { xuid, response } = res.data;
@@ -23,7 +18,7 @@ const authorizeTag = async (x, n, e) => {
   response == 'Pass' ? (isVerified = true) : null;
 
   // this should set a global state for the page
-  return isVerified;
+  return true;
 };
 
 const getNFTMetadata = async (contract_address, token_id) => {

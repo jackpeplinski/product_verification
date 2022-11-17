@@ -11,11 +11,8 @@ const Page = () => {
   // on page load
   useEffect(() => {
     // use query paramters her
-
     getDetails();
   }, []);
-
-  // make the call here
 
   // use async fn to request
   const getDetails = async () => {
@@ -24,26 +21,24 @@ const Page = () => {
     const token_id = token_id_temp;
 
     // build request url
-    const url = `http://localhost:5000/details/${contract_address}/${token_id}`;
+    const url = `/details/${contract_address}/${token_id}`;
 
     // get request from express backend
     const res = await axios.get(url);
-    setDetails(res);
-    console.log(details);
+    setDetails(res.data);
   };
 
   return (
     <>
       <h1 style={{ textAlign: 'center' }}>Louis Vuitton Purse</h1>
-      <h3 style={{ textAlign: 'center' }}>Verified Luxury Goods</h3>
-      <img />
-      <h3>Owner</h3>
-      <p>0xNinjuhL</p>
+      <h3 style={{ textAlign: 'center' }}>{details.clientName}</h3>
+      <img style={{ height: 150, width: 150 }} src={details.image} />
+      <h3>OwnerWallet Address</h3>
+      <p>{details.ownerWallet}</p>
       <h3>Description</h3>
-      <p>
-        Show your loyalty. A HAPEBADGE gives you early access to merchandise,
-        events and more. Hold it close and stay HAPE.
-      </p>
+      <p>{details.description}</p>
+      <h3>NFT Name</h3>
+      <p>{details.nftName}</p>
     </>
   );
 };

@@ -27,12 +27,21 @@ app.get('/details/:contract_address/:token_id', async (req, res) => {
   const { contract_address, token_id } = req.params;
 
   // get both the metadata and transaction history to display to user
-  let metadata = await getNFTMetadata(contract_address, token_id);
-  let clientName = await getTransactionDetails(contract_address, token_id);
+  const metadata = await getNFTMetadata(contract_address, token_id);
+  const clientName = await getTransactionDetails(contract_address, token_id);
+
+  // destructure metadata
+  const { animation_url, attributes, description, image, name } =
+    metadata.details;
 
   //return the combined JSON data to frontend
   const nftDetails = {
-    metadata: metadata,
+    animation_url: animation_url,
+    image: image,
+    attributes: attributes,
+    description: description,
+    nftName: name,
+    ownerWallet: metadata.owner_wallet,
     clientName: clientName,
   };
 
@@ -41,10 +50,8 @@ app.get('/details/:contract_address/:token_id', async (req, res) => {
 
 // this will return the verification status of the NFC tag
 app.get('/auth', async (req, res) => {
-  const { x, n, e } = req.query;
-
   // let's make the request to get the tag status
-  let isAuthorized = await authorizeTag(x, n, e);
+  const isAuthorized = await authorizeTag(req.query);
 
   res.send(isAuthorized);
 });
