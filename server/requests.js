@@ -17,7 +17,7 @@ const authorizeTag = async (q_params) => {
   let isVerified = false;
   response == 'Pass' ? (isVerified = true) : null;
 
-  // this should set a global state for the page
+  // this will determine what page to land on
   return isVerified;
 };
 
