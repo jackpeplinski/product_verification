@@ -2,10 +2,15 @@ import {
   getNFTMetadata,
   getTransactionDetails,
   authorizeTag,
-} from './requests.js';
+} from "./requests.js";
+import express from "express";
+import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
-import express from 'express';
-import cors from 'cors';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // set up application to use proxy server
 const app = express();
@@ -18,12 +23,12 @@ const port = process.env.PORT || 3001;
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 //load homepage
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname + '/client/public/index.html'));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/public/index.html"));
 });
 
 // This will return the details of the associated NFT
-app.get('/details/:contract_address/:token_id', async (req, res) => {
+app.get("/details/:contract_address/:token_id", async (req, res) => {
   const { contract_address, token_id } = req.params;
 
   // get both the metadata and transaction history to display to user
@@ -49,7 +54,7 @@ app.get('/details/:contract_address/:token_id', async (req, res) => {
 });
 
 // this will return the verification status of the NFC tag
-app.get('/auth', async (req, res) => {
+app.get("/auth", async (req, res) => {
   // let's make the request to get the tag status
   const isAuthorized = await authorizeTag(req.query);
 
