@@ -5,31 +5,19 @@ import {
 } from "./requests.js";
 import express from "express";
 import cors from "cors";
-import path from "path";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 // set up application to use proxy server
 export const app = express();
 app.use(cors());
 app.use(express.json()); //allow use to parse body of req
-// app.use(express.static(path.join(__dirname, "/../client/build")));
 
 const port = process.env.PORT || 3002;
 
 // This displays message that the server running and listening to specified port
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-//load homepage
-// app.get("/", (req, res) => {
-//   res.sendFile(path.join(__dirname + "/../client/build/index.html"));
-// });
-
-app.get("/api/ok", async (req, res) => {
-  res.send("ok");
+app.get("/api/", async (req, res) => {
+  res.send("api");
 });
 
 // This will return the details of the associated NFT
