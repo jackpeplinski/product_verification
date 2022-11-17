@@ -21,17 +21,15 @@ app.use(express.static(path.join(__dirname, "/../client/build")));
 const port = process.env.PORT || 3002;
 
 // This displays message that the server running and listening to specified port
-if (port) {
-  app.listen(port, () => console.log(`Listening on port ${port}`));
-}
+app.listen(port, () => console.log(`Listening on port ${port}`));
 
 //load homepage
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "/../client/build/index.html"));
-});
+// app.get("/", (req, res) => {
+//   res.sendFile(path.join(__dirname + "/../client/build/index.html"));
+// });
 
 // This will return the details of the associated NFT
-app.get("/details/:contract_address/:token_id", async (req, res) => {
+app.get("/api/details/:contract_address/:token_id", async (req, res) => {
   const { contract_address, token_id } = req.params;
 
   // get both the metadata and transaction history to display to user
@@ -57,7 +55,7 @@ app.get("/details/:contract_address/:token_id", async (req, res) => {
 });
 
 // this will return the verification status of the NFC tag
-app.get("/auth", async (req, res) => {
+app.get("/api/auth", async (req, res) => {
   // let's make the request to get the tag status
   const isAuthorized = await authorizeTag(req.query);
 
