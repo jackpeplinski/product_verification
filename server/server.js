@@ -21,7 +21,9 @@ app.use(express.static(path.join(__dirname, "/../client/build")));
 const port = process.env.PORT || 3001;
 
 // This displays message that the server running and listening to specified port
-app.listen(port, () => console.log(`Listening on port ${port}`));
+if (port) {
+  app.listen(port, () => console.log(`Listening on port ${port}`));
+}
 
 //load homepage
 app.get("/", (req, res) => {
