@@ -13,7 +13,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // set up application to use proxy server
-const app = express();
+export const app = express();
 app.use(cors());
 app.use(express.json()); //allow use to parse body of req
 app.use(express.static(path.join(__dirname, "/../client/build")));
