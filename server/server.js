@@ -28,6 +28,10 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 //   res.sendFile(path.join(__dirname + "/../client/build/index.html"));
 // });
 
+app.get("/ok", async (req, res) => {
+  res.send("ok");
+});
+
 // This will return the details of the associated NFT
 app.get("/api/details/:contract_address/:token_id", async (req, res) => {
   const { contract_address, token_id } = req.params;
