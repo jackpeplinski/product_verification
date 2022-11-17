@@ -18,7 +18,7 @@ app.use(cors());
 app.use(express.json()); //allow use to parse body of req
 app.use(express.static(path.join(__dirname, "/../client/build")));
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3002;
 
 // This displays message that the server running and listening to specified port
 if (port) {
