@@ -10,8 +10,12 @@ const Page = () => {
 
   // on page load
   useEffect(() => {
+    // use query paramters her
+
     getDetails();
   }, []);
+
+  // make the call here
 
   // use async fn to request
   const getDetails = async () => {

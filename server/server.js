@@ -5,12 +5,22 @@ import {
 } from './requests.js';
 
 import express from 'express';
+import cors from 'cors';
 
+// set up application to use proxy server
 const app = express();
-const port = process.env.PORT || 5000;
+app.use(cors());
+app.use(express.json()); //allow use to parse body of req
+
+const port = process.env.PORT || 3001;
 
 // This displays message that the server running and listening to specified port
 app.listen(port, () => console.log(`Listening on port ${port}`));
+
+//load homepage
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/public/index.html'));
+});
 
 // This will return the details of the associated NFT
 app.get('/details/:contract_address/:token_id', async (req, res) => {
@@ -33,7 +43,7 @@ app.get('/details/:contract_address/:token_id', async (req, res) => {
 app.get('/auth', async (req, res) => {
   const { x, n, e } = req.query;
 
-  // let's make the request to get the information
+  // let's make the request to get the tag status
   let isAuthorized = await authorizeTag(x, n, e);
 
   res.send(isAuthorized);
