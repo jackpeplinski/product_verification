@@ -18,7 +18,7 @@ const authorizeTag = async (q_params) => {
   response == 'Pass' ? (isVerified = true) : null;
 
   // this should set a global state for the page
-  return true;
+  return isVerified;
 };
 
 const getNFTMetadata = async (contract_address, token_id) => {
