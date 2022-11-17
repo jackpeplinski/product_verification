@@ -28,7 +28,7 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 //   res.sendFile(path.join(__dirname + "/../client/build/index.html"));
 // });
 
-app.get("/ok", async (req, res) => {
+app.get("/api/ok", async (req, res) => {
   res.send("ok");
 });
 
