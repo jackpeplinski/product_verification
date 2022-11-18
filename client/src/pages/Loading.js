@@ -22,7 +22,10 @@ const Loading = () => {
     const q_params = new URL(document.location).searchParams;
 
     // use params to call our backend + assign verified status
-    const res = await axios.get("https://vla-api.vercel.app/auth", q_params);
+    const res = await axios.get(
+      "https://vla-api.vercel.app/api/auth",
+      q_params
+    );
     setVerified(res.data);
 
     // chain the call to get nft details
@@ -36,7 +39,7 @@ const Loading = () => {
     const token_id = token_id_temp;
 
     // build request url
-    const url = `https://vla-api.vercel.app/details/${contract_address}/${token_id}`;
+    const url = `https://vla-api.vercel.app/api/details/${contract_address}/${token_id}`;
 
     // get request from express backend
     const res = await axios.get(url);
