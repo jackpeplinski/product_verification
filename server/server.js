@@ -8,7 +8,7 @@ import cors from "cors";
 
 // set up application to use proxy server
 export const app = express();
-app.use(cors({ origin: "https://vla.vercel.app/" }));
+app.use(cors({ origin: "*" }));
 app.use(express.json()); //allow use to parse body of req
 
 const port = process.env.PORT || 3002;
