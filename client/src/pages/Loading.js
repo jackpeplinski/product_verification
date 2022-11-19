@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import LoadingComponent from "../components/LoadingComponent";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const contract_address_temp = "0x6fa9f4b50e2950a8137a76649193816fb29dad2c";
 const token_id_temp = "7981";
@@ -9,7 +10,7 @@ const url = require("url");
 
 const Loading = () => {
   // parse window here into base + query parameters
-  const [isLoading, setLoading] = useState("submitting");
+  const [isLoading, setLoading] = useState(true);
   const [isVerified, setVerified] = useState(false);
   const [nftData, setNftData] = useState([]);
   const navigate = useNavigate();
@@ -72,7 +73,7 @@ const Loading = () => {
   return (
     <>
       {isLoading ? (
-        <LoadingComponent />
+        <CircularProgress sx={{ color: "#7AC141" }} />
       ) : isVerified ? (
         navigate("/authenicated", { state: nftData })
       ) : (

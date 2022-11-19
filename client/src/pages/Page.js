@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
+import LoadingComponent from "../components/LoadingComponent";
 
 const Page = () => {
   const { state } = useLocation();
@@ -7,8 +8,9 @@ const Page = () => {
 
   return (
     <>
-      <h1 style={{ textAlign: 'center' }}>Louis Vuitton Purse</h1>
-      <h3 style={{ textAlign: 'center' }}>{details.clientName}</h3>
+      <LoadingComponent />
+      <h1 style={{ textAlign: "center" }}>Louis Vuitton Purse</h1>
+      <h3 style={{ textAlign: "center" }}>{details.clientName}</h3>
       <img style={{ height: 150, width: 150 }} src={details.image} />
       <h3>OwnerWallet Address</h3>
       <p>{details.ownerWallet}</p>
