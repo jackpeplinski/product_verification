@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import LoadingComponent from "../components/LoadingComponent";
 
 const contract_address_temp = "0x6fa9f4b50e2950a8137a76649193816fb29dad2c";
 const token_id_temp = "7981";
 const url = require("url");
 
 const Loading = () => {
-  // // parse window here into base + query parameters
-  const [isLoading, setLoading] = useState(true);
+  // parse window here into base + query parameters
+  const [isLoading, setLoading] = useState("submitting");
   const [isVerified, setVerified] = useState(false);
   const [nftData, setNftData] = useState([]);
   const navigate = useNavigate();
@@ -71,7 +72,7 @@ const Loading = () => {
   return (
     <>
       {isLoading ? (
-        <h1>Loading...</h1>
+        <LoadingComponent />
       ) : isVerified ? (
         navigate("/authenicated", { state: nftData })
       ) : (
