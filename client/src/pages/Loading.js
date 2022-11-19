@@ -73,7 +73,9 @@ const Loading = () => {
   return (
     <>
       {isLoading ? (
-        <CircularProgress sx={{ color: "#7AC141" }} />
+        <div style={{ margin: "10% 25vw" }}>
+          <CircularProgress sx={{ color: "#7AC141" }} />
+        </div>
       ) : isVerified ? (
         navigate("/authenicated", { state: nftData })
       ) : (
