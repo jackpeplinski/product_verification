@@ -25,15 +25,15 @@ const Loading = () => {
     const cur_url = url.parse(window.location.href, true);
 
     // use params to call our backend + assign verified status
-    // const res = await axios.get('https://vla-api.vercel.app/api/auth', {
-    //   params: cur_url.query,
-    // });
-    // setVerified(res.data);
+    const res = await axios.get("https://vla-api.vercel.app/api/auth", {
+      params: cur_url.query,
+    });
+    setVerified(res.data);
 
     // for testing
-    const res = await new Promise((res) =>
-      setTimeout(() => res({ data: true }), 2000)
-    );
+    // const res = await new Promise((res) =>
+    //   setTimeout(() => res({ data: true }), 2000)
+    // );
     setVerified(res.data);
 
     // chain the call to get nft details
@@ -50,21 +50,21 @@ const Loading = () => {
     const url = `https://vla-api.vercel.app/api/details/${contract_address}/${token_id}`;
 
     // get request from express backend
-    // const res = await axios.get(url);
+    const res = await axios.get(url);
 
     // For testing
-    const res = await new Promise((res) =>
-      setTimeout(
-        () =>
-          res({
-            data: {
-              details: "details",
-              owner_wallet: "owner_wallet",
-            },
-          }),
-        2000
-      )
-    );
+    // const res = await new Promise((res) =>
+    //   setTimeout(
+    //     () =>
+    //       res({
+    //         data: {
+    //           details: "details",
+    //           owner_wallet: "owner_wallet",
+    //         },
+    //       }),
+    //     2000
+    //   )
+    // );
 
     setNftData(res.data);
     setLoading(false);
