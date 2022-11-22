@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 // components
-import Checkmark from './pages/Checkmark';
-import Page from './pages/Page';
+import AuthenticatedPage from './pages/AuthenticatedPage';
+import ErrorPage from './pages/ErrorPage';
 import Wrapper from './pages/Wrapper';
 import Loading from './pages/Loading';
 
@@ -13,7 +13,8 @@ function App() {
         <Wrapper>
           <Routes>
             <Route path='/' element={<Loading />} />
-            <Route path='/authenicated' element={<Page />} />
+            <Route path='/authenicated' element={<AuthenticatedPage />} />
+            <Route path='/error' element={<ErrorPage />} />
           </Routes>
         </Wrapper>
       </BrowserRouter>
