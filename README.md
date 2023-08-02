@@ -1,6 +1,8 @@
 # VLA Public Repository
 VLA has decided to pause the development of our service, however, the code will remain public as a POC.
 
+![Spline Demo](demo.gif)
+
 ## Problem Overview
 
 In the pre-owned luxury goods (PLG) market, 20% of consumers are defrauded into purchasing a counterfeit or stolen luxury product. 75% of consumers of PLGs are also sellers, meaning counterfeit goods are unknowingly being cycled through this circular economy at an alarming rate. Consumers of PLGs lack the credibility, capability, and resources to convey authenticity when they sell their products, reducing the product’s liquidity and value. The authenticity of PLGs can be difficult to determine, expensive to confirm, and expensive to communicate to a consumer. Despite purchasing an authentic product from a purveyor (seller of luxury goods), there is no solution that verifies the history of who has owned the PLG. Many consumers lack the confidence to purchase PLGs in fear of being defrauded, stalling the inherent circular motion of the PLG market.
